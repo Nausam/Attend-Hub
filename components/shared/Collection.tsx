@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import Pagination from "./Pagination";
 import Card from "./Card";
-import { ITournament } from "@/lib/database/models/tournament.model";
+import { IEmployee } from "@/lib/database/models/employee.model";
 
 type CollectionProps = {
-  data: ITournament[];
+  data: IEmployee[];
   emptyTitle: string;
   emptyStateSubtext: string;
   homePage?: boolean;
@@ -31,14 +31,14 @@ const Collection = ({
         {data.length > 0 ? (
           <div className="flex-center flex-col gap-10 ">
             <ul className="flex-center w-full flex-wrap gap-5 xl:gap-10">
-              {data.map((tournament, index) => {
+              {data.map((employee, index) => {
                 const hasOrderLink = collectionType === "My_Products";
                 const hidePrice = collectionType === "My_Products";
 
                 return (
                   <li key={index} className="flex justify-center">
                     <Card
-                      tournament={tournament}
+                      employee={employee}
                       hasOrderLink={hasOrderLink}
                       hidePrice={hidePrice}
                     />

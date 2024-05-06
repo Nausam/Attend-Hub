@@ -1,30 +1,29 @@
-import { ITournament } from "@/lib/database/models/tournament.model";
+import { IEmployee } from "@/lib/database/models/employee.model";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { DeleteConfirmation } from "./DeleteConfirmation";
 
 type CardProps = {
-  tournament: ITournament;
+  employee: IEmployee;
   hasOrderLink?: boolean;
   hidePrice?: boolean;
 };
 
-const Card = ({ tournament, hasOrderLink, hidePrice }: CardProps) => {
+const Card = ({ employee, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
-  const isTournamentCreator =
-    tournament && tournament.creator && tournament.creator._id === userId;
+  const isEmployeeCreator =
+    employee && employee.creator && employee.creator._id === userId;
   // const isProductCreator = product.creator._id === userId.toString();
 
   return (
     <div className="relative flex w-full flex-col">
       <div className="flex flex-col p-5 gap-5">
-        <Link href={`/tournaments/${tournament._id}`}>
+        <Link href={`/employees/${employee._id}`}>
           <Image
-            src={tournament.imageUrl}
+            src={employee.imageUrl}
             width={200}
             height={100}
             alt="product image"
@@ -32,9 +31,9 @@ const Card = ({ tournament, hasOrderLink, hidePrice }: CardProps) => {
           />
         </Link>
         <div className="flex flex-col items-center justify-center gap-5">
-          {isTournamentCreator && !hidePrice && (
+          {isEmployeeCreator && !hidePrice && (
             <div className="absolute left-2 top-2 flex flex-col gap-4 rounded-sm bg-white dark:bg-[#252525] p-2 shadow-sm transition-all">
-              <Link href={`/tournaments/${tournament._id}/update`}>
+              <Link href={`/employees/${employee._id}/update`}>
                 <Image
                   src="/assets/icons/edit.svg"
                   alt="edit"
@@ -48,9 +47,9 @@ const Card = ({ tournament, hasOrderLink, hidePrice }: CardProps) => {
           )}
 
           <div className="flex flex-col items-start gap-3">
-            <Link href={`/tournaments/${tournament._id}`}>
+            <Link href={`/tournaments/${employee._id}`}>
               <p className="p-medium-16 text-black dark:text-gray-300">
-                {tournament.title}
+                {employee.firstName}
               </p>
             </Link>
 
@@ -58,11 +57,11 @@ const Card = ({ tournament, hasOrderLink, hidePrice }: CardProps) => {
               <div className="">
                 <div className="flex gap-2">
                   <span className="p-semibold-14 w-fit rounded-sm bg-grey-500/10 px-4 py-1">
-                    {`$${tournament.prizePool}`}
+                    {`$${employee.lastName}`}
                   </span>
 
                   <p className="p-semibold-14 w-fit rounded-sm bg-grey-500/10 px-4 text-grey-500 flex-center dark:text-gray-400">
-                    {tournament.category.name}
+                    {employee.designation.name}
                   </p>
                 </div>
               </div>
@@ -73,7 +72,7 @@ const Card = ({ tournament, hasOrderLink, hidePrice }: CardProps) => {
 
               {hasOrderLink && (
                 <Link
-                  href={`/orders?eventId=${tournament._id}`}
+                  href={`/orders?eventId=${employee._id}`}
                   className="flex mt-5 "
                 >
                   <p className="text-primary-500">Order Details</p>
