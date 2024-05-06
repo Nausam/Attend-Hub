@@ -1,7 +1,7 @@
 import React from "react";
 
-const UpdatePage = () => {
-  return <div>Update Page</div>;
+const page = () => {
+  return <div>page</div>;
 };
 
-export default UpdatePage;
+export default page;
