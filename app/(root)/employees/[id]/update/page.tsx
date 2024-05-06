@@ -1,9 +1,9 @@
 import React from "react";
 import { Metadata } from "next";
 
-import TournamentForm from "@/components/shared/TournamentForm";
 import { getTournamentById } from "@/lib/actions/tournament.actions";
 import { auth } from "@clerk/nextjs";
+import EmployeeForm from "@/components/shared/Employee/EmployeeForm";
 
 export const metadata: Metadata = {
   title: "Update | SAPPU",
@@ -31,11 +31,11 @@ const UpdateTournament = async ({ params: { id } }: UpdateTournamentProps) => {
       </section>
 
       <div className="wrapper my-8">
-        <TournamentForm
+        <EmployeeForm
           type="Update"
           userId={userId}
-          tournament={tournament}
-          tournamentId={tournament._id}
+          employee={tournament}
+          employeeId={tournament._id}
         />
       </div>
     </>

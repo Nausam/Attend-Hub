@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import { getRelatedTournamentsByCategory } from "@/lib/actions/tournament.actions";
 import { SearchParamProps } from "@/types";
