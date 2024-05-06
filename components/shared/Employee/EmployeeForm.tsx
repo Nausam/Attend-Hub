@@ -29,11 +29,6 @@ import { IEmployee } from "@/lib/database/models/employee.model";
 
 import { Switch } from "@/components/ui/switch";
 
-import {
-  createTournament,
-  updateTournament,
-} from "@/lib/actions/tournament.actions";
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "@/components/ui/use-toast";

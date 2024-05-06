@@ -7,40 +7,40 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { getAllCategories } from "@/lib/actions/category.actions";
-import { ICategory } from "@/lib/database/models/category.model";
+import { getAllDesignations } from "@/lib/actions/designation.actions";
+import { IDesignation } from "@/lib/database/models/designation.model";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const CategoryFilter = () => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
+  const [designations, setDesignations] = useState<IDesignation[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const getCategories = async () => {
-      const categoryList = await getAllCategories();
+    const getDesignations = async () => {
+      const designationList = await getAllDesignations();
 
-      categoryList && setCategories(categoryList as ICategory[]);
+      designationList && setDesignations(designationList as IDesignation[]);
     };
 
-    getCategories();
+    getDesignations();
   }, []);
 
-  const onSelectCategory = (category: string) => {
+  const onSelectDesignation = (designation: string) => {
     let newUrl = "";
 
-    if (category && category !== "All") {
+    if (designation && designation !== "All") {
       newUrl = formUrlQuery({
         params: searchParams.toString(),
-        key: "category",
-        value: category,
+        key: "designation",
+        value: designation,
       });
     } else {
       newUrl = removeKeysFromQuery({
         params: searchParams.toString(),
-        keysToRemove: ["category"],
+        keysToRemove: ["designation"],
       });
     }
 
@@ -48,7 +48,7 @@ const CategoryFilter = () => {
   };
 
   return (
-    <Select onValueChange={(value: string) => onSelectCategory(value)}>
+    <Select onValueChange={(value: string) => onSelectDesignation(value)}>
       <SelectTrigger className="select-field dark:text-black">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
@@ -60,13 +60,13 @@ const CategoryFilter = () => {
           All
         </SelectItem>
 
-        {categories.map((category) => (
+        {designations.map((designation) => (
           <SelectItem
-            value={category.name}
-            key={category._id}
+            value={designation.name}
+            key={designation._id}
             className="select-item p-regular-14 dark:text-white dark:bg-[#191919] dark:hover:bg-[#252525] z-50"
           >
-            {category.name}
+            {designation.name}
           </SelectItem>
         ))}
       </SelectContent>

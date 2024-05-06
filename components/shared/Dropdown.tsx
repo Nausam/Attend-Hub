@@ -20,8 +20,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "../ui/input";
 
-import { getAllCategories } from "@/lib/actions/category.actions";
-import { ICategory } from "@/lib/database/models/category.model";
 import {
   createDesignation,
   getAllDesignations,
