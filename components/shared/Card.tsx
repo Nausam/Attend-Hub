@@ -46,21 +46,17 @@ const Card = ({ employee, hasOrderLink, hidePrice }: CardProps) => {
             </div>
           )}
 
-          <div className="flex flex-col items-start gap-3">
+          <div className="flex flex-col items-center gap-3">
             <Link href={`/tournaments/${employee._id}`}>
               <p className="p-medium-16 text-black dark:text-gray-300">
-                {employee.firstName}
+                {employee.firstName} {employee.lastName}
               </p>
             </Link>
 
             <div className="flex-center">
               <div className="">
                 <div className="flex gap-2">
-                  <span className="p-semibold-14 w-fit rounded-sm bg-grey-500/10 px-4 py-1">
-                    {`$${employee.lastName}`}
-                  </span>
-
-                  <p className="p-semibold-14 w-fit rounded-sm bg-grey-500/10 px-4 text-grey-500 flex-center dark:text-gray-400">
+                  <p className="p-semibold-14 w-fit rounded-sm bg-grey-500/10 py-2 px-4 text-grey-500 flex-center dark:text-gray-400">
                     {employee.designation.name}
                   </p>
                 </div>

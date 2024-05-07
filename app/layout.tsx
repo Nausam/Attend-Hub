@@ -1,24 +1,11 @@
-import type { Metadata } from "next";
-import { Changa } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/Providers/ThemeProvider";
+import { constructMetadata } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Home | Attend Hub",
-  description:
-    "Attend Hub is a platform that helps you to manage your employees and their attendance.",
-  icons: {
-    icon: "/assets/images/logo.png",
-  },
-};
+export const metadata = constructMetadata();
 
-const changa = Changa({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "500"],
-  variable: "--font-poppins",
-});
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "500"],
@@ -33,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={changa.variable}>
+        <body className={montserrat.variable}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

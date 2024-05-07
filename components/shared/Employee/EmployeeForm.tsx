@@ -90,7 +90,7 @@ const EmployeeForm = ({
         });
         if (newEmployee) {
           form.reset();
-          router.push(`/employess/${newEmployee._id}`);
+          router.push(`/employees/${newEmployee._id}`);
         }
         toast({
           title: `${values.lastName} created successfully`,
@@ -199,30 +199,28 @@ const EmployeeForm = ({
             name="recordCardNumber"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <Textarea
+                <FormControl>
+                  <Input
                     placeholder="Record Card Number"
                     {...field}
-                    className="textarea rounded-2xl"
+                    className="input-field"
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </div>
 
-        <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
             name="sickLeave"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <Textarea
+                <FormControl>
+                  <Input
                     placeholder="Sick Leave"
                     {...field}
-                    className="textarea rounded-2xl"
+                    className="input-field"
                   />
                 </FormControl>
                 <FormMessage />
@@ -235,28 +233,11 @@ const EmployeeForm = ({
             name="annualLeave"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <Textarea
+                <FormControl>
+                  <Input
                     placeholder="Annual Leave"
                     {...field}
-                    className="textarea rounded-2xl"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="familyRelatedLeave"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <Textarea
-                    placeholder="Family Related Leave"
-                    {...field}
-                    className="textarea rounded-2xl"
+                    className="input-field"
                   />
                 </FormControl>
                 <FormMessage />
@@ -268,17 +249,134 @@ const EmployeeForm = ({
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
+            name="familyRelatedLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Family Related Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="emergencyLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Eemergency Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="maternityLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Maternity Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="paternityLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Paternity Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="hithaaneeLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Hithaanee Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="officialLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Official Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="noPayLeave"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="No Pay Leave"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="joinedDate"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[55px] w-full overflow-hidden rounded-sm bg-grey-50 dark:bg-lighteBlue_1 px-4 py-2">
-                    <Image
-                      src="/assets/icons/dollar.svg"
-                      alt="price"
-                      width={24}
-                      height={24}
-                    />
                     <p className="ml-3 whitespace-nowrap "> Start Date:</p>
 
                     <DatePicker
@@ -296,7 +394,9 @@ const EmployeeForm = ({
               </FormItem>
             )}
           />
+        </div>
 
+        <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
             name="imageUrl"
@@ -322,9 +422,7 @@ const EmployeeForm = ({
             disabled={form.formState.isSubmitting}
             className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
           >
-            {form.formState.isSubmitting
-              ? "Submitting..."
-              : `${type} Tournament `}
+            {form.formState.isSubmitting ? "Submitting..." : `${type} Employee`}
           </Button>
         </div>
       </form>

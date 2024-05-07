@@ -1,12 +1,7 @@
-import { Metadata } from "next";
 import React from "react";
 
 import { auth } from "@clerk/nextjs";
 import EmployeeForm from "./EmployeeForm";
-
-export const metadata: Metadata = {
-  title: "Create | SAPPU",
-};
 
 const CreateEmployee = () => {
   const { sessionClaims } = auth();
@@ -17,7 +12,7 @@ const CreateEmployee = () => {
     <>
       <section>
         <h3 className="wrapper h3-bold text-center sm:text-left">
-          Create Tournament
+          Create Employee
         </h3>
       </section>
 

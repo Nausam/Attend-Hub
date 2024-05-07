@@ -109,15 +109,9 @@ export type DeleteProductParams = {
   path: string;
 };
 
-export type GetAllProductsParams = {
+export type GetAllEmployeesParams = {
   query: string;
-  category: string;
-  limit: number;
-  page: number;
-};
-export type GetAllTournamentsParams = {
-  query: string;
-  category: string;
+  designation: string;
   limit: number;
   page: number;
 };

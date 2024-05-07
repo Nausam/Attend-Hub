@@ -50,7 +50,7 @@ const CategoryFilter = () => {
   return (
     <Select onValueChange={(value: string) => onSelectDesignation(value)}>
       <SelectTrigger className="select-field dark:text-black">
-        <SelectValue placeholder="Category" />
+        <SelectValue placeholder="Search by designation" />
       </SelectTrigger>
       <SelectContent className="dark:bg-[#191919]">
         <SelectItem

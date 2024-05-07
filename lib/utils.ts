@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 import qs from "query-string";
 
 import { UrlQueryParams, RemoveUrlQueryParams } from "@/types";
+import { Metadata } from "next";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -97,6 +98,37 @@ export function removeKeysFromQuery({
     },
     { skipNull: true }
   );
+}
+
+export function constructMetadata({
+  title = "Your default title Here",
+  description = "Your default description here",
+  image = "/thumbnail.png",
+  icons = "/favicon.ico",
+}: {
+  title?: string;
+  description?: string;
+  image?: string;
+  icons?: string;
+} = {}): Metadata {
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+      creator: "@joshtriedcoding",
+    },
+    icons,
+    metadataBase: new URL("https://yourwebsite.com/"),
+  };
 }
 
 export const handleError = (error: unknown) => {
